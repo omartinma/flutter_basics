@@ -2,20 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ie_workshop/sample_app/bloc/sample_bloc.dart';
 
-class MyItem {
-  MyItem({
-    required this.name,
-    required this.description,
-    required this.url,
-  });
-
-  final String name;
-  final String description;
-  final String url;
-}
-
 class SampleAppScreen extends StatelessWidget {
   const SampleAppScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocProvider(
+      create: (context) => SampleBloc()..add(const FetchData()),
+      child: const SampleAppScreenView(),
+    );
+  }
+}
+
+class SampleAppScreenView extends StatelessWidget {
+  const SampleAppScreenView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +36,7 @@ class SampleAppScreen extends StatelessWidget {
                     style: const TextStyle(fontSize: 24),
                   ),
                   leading: Image.network(item.url),
-                  trailing: const Icon(Icons.account_tree_sharp),
+                  trailing: const Icon(Icons.arrow_forward_ios),
                   onTap: () {
                     Navigator.of(context).push(
                       MaterialPageRoute<void>(
@@ -72,4 +72,16 @@ class DetailsScreen extends StatelessWidget {
       body: Text(item.description, style: const TextStyle(fontSize: 30)),
     );
   }
+}
+
+class MyItem {
+  MyItem({
+    required this.name,
+    required this.description,
+    required this.url,
+  });
+
+  final String name;
+  final String description;
+  final String url;
 }
