@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:ie_workshop/basics/basics_screen.dart';
 import 'package:ie_workshop/sample_app/bloc/sample_bloc.dart';
-import 'package:ie_workshop/sample_app/sample_app_screen.dart';
 
 void main() {
   runApp(const MainApp());
@@ -15,7 +15,7 @@ class MainApp extends StatelessWidget {
     return MaterialApp(
       home: BlocProvider(
         create: (context) => SampleBloc()..add(const FetchData()),
-        child: const SampleAppScreen(),
+        child: const BasicsScreen(),
       ),
     );
   }
