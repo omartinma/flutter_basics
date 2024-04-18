@@ -1,8 +1,10 @@
 import 'dart:async';
+import 'dart:convert';
 
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:flutter_basics/sample_app/sample_app_screen.dart';
+import 'package:flutter_basics/sample_app/sample_app.dart';
+import 'package:http/http.dart';
 import 'package:meta/meta.dart';
 
 part 'sample_event.dart';
@@ -14,17 +16,24 @@ class SampleBloc extends Bloc<SampleEvent, SampleState> {
   }
 
   FutureOr<void> _fetchData(FetchData event, Emitter<SampleState> emit) async {
-    await Future<void>.delayed(const Duration(seconds: 1));
-    final list = <MyItem>[];
-    for (var i = 0; i < 5; i++) {
-      list.add(
-        MyItem(
-          name: 'Name $i',
-          description: 'Description $i',
-          url: 'https://picsum.photos/id/$i/200',
-        ),
-      );
+    final httpClient = Client();
+    const baseUrl = 'rickandmortyapi.com';
+    const endpoint = 'api/character';
+    final url = Uri.https(baseUrl, endpoint);
+    final response = await httpClient.get(url);
+
+    if (response.statusCode != 200) {}
+    emit(SampleError());
+    try {
+      final charactersJson = jsonDecode(response.body) as Map<String, dynamic>;
+      final characters = (charactersJson['results'] as List)
+          .map(
+            (dynamic e) => Character.fromJson(e as Map<String, dynamic>),
+          )
+          .toList();
+      emit(SampleSucces(items: characters));
+    } catch (e) {
+      emit(SampleError());
     }
-    emit(SampleSucces(items: list));
   }
 }
