@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_basics/sample_app/bloc/sample_bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:ie_workshop/sample_app/bloc/sample_bloc.dart';
 
 class SampleAppScreen extends StatelessWidget {
   const SampleAppScreen({super.key});
