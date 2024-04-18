@@ -1,6 +1,6 @@
 {
-    "name": "ie_workshop",
-    "short_name": "ie_workshop",
+    "name": "flutter_basics",
+    "short_name": "flutter_basics",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

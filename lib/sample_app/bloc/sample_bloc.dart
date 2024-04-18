@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:ie_workshop/sample_app/sample_app_screen.dart';
+import 'package:flutter_basics/sample_app/sample_app_screen.dart';
 import 'package:meta/meta.dart';
 
 part 'sample_event.dart';

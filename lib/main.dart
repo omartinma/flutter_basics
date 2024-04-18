@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ie_workshop/basics/basics_screen.dart';
+import 'package:flutter_basics/sample_app/sample_app_screen.dart';
 
 void main() {
   runApp(const MainApp());
@@ -11,7 +11,7 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      home: BasicScreenView(),
+      home: SampleAppScreen(),
     );
   }
 }

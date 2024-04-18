@@ -1,3 +1,3 @@
-# ie_workshop
+# flutter_basics
 
 A new Flutter project.

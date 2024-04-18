@@ -9,7 +9,7 @@ class BasicScreenView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('IE Workshop'),
+        title: const Text('Flutter basics'),
         backgroundColor: Colors.red,
         actions: [
           IconButton(
