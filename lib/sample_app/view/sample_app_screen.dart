@@ -29,6 +29,9 @@ class SampleAppScreenView extends StatelessWidget {
           if (state is SampleSucces) {
             return CharacterList(characters: state.items);
           }
+          if (state is SampleError) {
+            return const Center(child: Text('Something went wrong'));
+          }
           return const Center(child: CircularProgressIndicator());
         },
       ),

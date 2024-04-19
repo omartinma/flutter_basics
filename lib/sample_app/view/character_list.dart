@@ -36,13 +36,7 @@ class CharacterItemView extends StatelessWidget {
         fit: StackFit.expand,
         children: [
           Positioned.fill(
-            child: Hero(
-              tag: 'image_hero_${character.name}',
-              child: FittedBox(
-                fit: BoxFit.fill,
-                child: Image.network(character.image),
-              ),
-            ),
+            child: Image.network(character.image),
           ),
           Positioned(
             left: 0,
