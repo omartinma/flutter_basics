@@ -22,8 +22,9 @@ class SampleBloc extends Bloc<SampleEvent, SampleState> {
     final url = Uri.https(baseUrl, endpoint);
     final response = await httpClient.get(url);
 
-    if (response.statusCode != 200) {}
-    emit(SampleError());
+    if (response.statusCode != 200) {
+      return emit(SampleError());
+    }
     try {
       final charactersJson = jsonDecode(response.body) as Map<String, dynamic>;
       final characters = (charactersJson['results'] as List)
